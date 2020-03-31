@@ -1,5 +1,8 @@
-#Discord Bot That can screenshot
+# Discord Bot That can screenshot
 
+## Discord JS
 `npm install discord.js`
+
+## Puppeteer
 `npm i puppeteer`
 
