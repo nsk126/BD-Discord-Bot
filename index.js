@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XoLrHw.lasChFzwKA7-ginQomItC5IF_Jc";
+const token = "";
 
 const prefix = '??';
 
