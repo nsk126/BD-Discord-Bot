@@ -1,0 +1,25 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node .": "node run index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.1.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "puppeteer": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsk126/BD-Discord-Bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nsk126/BD-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/nsk126/BD-Discord-Bot#readme",
+  "description": ""
+}
