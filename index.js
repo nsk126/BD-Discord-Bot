@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = "Yourtoken";
+const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XoLrHw.lasChFzwKA7-ginQomItC5IF_Jc";
 
 const prefix = '??';
 
@@ -24,7 +24,7 @@ bot.on('message', message =>{
                     {name: '??hello', value: 'Hello !'},
                     {name: '??help', value: 'this menu !'},
                     {name: '??ava', value: 'shows your avatar'},
-                    {name: '??anime', value: 'shows an image'},
+                    {name: '??boat', value: 'shows an image'},
                 );
             message.channel.send(embed);
             break;
@@ -35,7 +35,7 @@ bot.on('message', message =>{
             const attachment = new Discord.MessageAttachment('images/anime-girl.jpg');
             message.channel.send(attachment);
             break;
-        case 'ss':
+        case 'boat':
             (async () => {
                 const browser = await puppeteer.launch();
                 const page = await browser.newPage();
