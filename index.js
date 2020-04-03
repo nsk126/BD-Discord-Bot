@@ -87,7 +87,9 @@ bot.on('message', message =>{
             var fETA = Math.ceil(hETA/2);
             fETA = Math.max(fETA,2);
 
-            message.reply("\nDistance(Km) = " + d + "\n" +"Hostile ETA = " + hETA + "\nFriendly ETA = " + fETA);
+            var RelicETA = hETA * 4;
+
+            message.reply("\nDistance(Km) = " + d + "\n" +"Hostile ETA = " + hETA + "\nFriendly ETA = " + fETA + "\nRelic ETA(at 25% Squad speed) = "+RelicETA);
             break;
 
         case 'mil':
