@@ -10,12 +10,11 @@ const prefix = '??';
 bot.on('ready',() => {
     console.log(`Logged in as ${bot.user.tag}!`);
     bot.user.setPresence({
-        game: { 
-            name: 'CE-3',
-            type: 'WATCHING'
-        },
-        status: 'online'
-    })
+            activity: { 
+                name: 'CE-3! type ??help ??BD',
+                type: 'PLAYING'
+            }, status: 'online' 
+        })
 })
 
 bot.on('message', message =>{
