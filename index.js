@@ -1,12 +1,9 @@
 const Discord = require('discord.js');
-const puppeteer = require('puppeteer');
-const fs = require('fs');
 
 const bot = new Discord.Client();
 const token = process.env.token;
 
 const prefix = '??';
-const path = 'images/recieve.png';
 
 bot.on('ready',() => {
     console.log(`Logged in as ${bot.user.tag}!`);
@@ -26,7 +23,6 @@ bot.on('message', message =>{
                     {name: '??hi', value: 'Hello !'},
                     {name: '??help', value: 'this menu !'},
                     {name: '??ava', value: 'shows your avatar'},
-                    // {name: '??boat', value: 'BD - Best of All times leaderboard'},
                     {name: '??BD', value: 'Battle-Dawn'},
                     {name: '??dist', value: '??dist Cord1 Cord2'},
                     {name: '??mil', value: 'Military scan results: N number of scans '},
@@ -126,21 +122,6 @@ bot.on('message', message =>{
             message.reply("\nMax units = " + Ubound + "\nMin units = " + Lbound);
             break;
 
-        // case 'boat':
-        //     // let gotoURL = arg[1];
-        //     (async () => {
-        //         const browser = await puppeteer.launch();
-        //         const page = await browser.newPage();
-        //         // await page.goto(gotoURL);
-        //         await page.goto('http://www.battledawn.com/?p=high_score');
-        //         await page.screenshot({path: 'images/recieve.png'});
-        //         await browser.close();
-        //       })();
-            
-        //     const recimg = new Discord.MessageAttachment('images/recieve.png');  
-        //     message.channel.send(recimg);
-        //     break;
-
     }
         
 })
@@ -151,14 +132,3 @@ bot.login(token);
 
 
 
-
-
-
-/**puppeteer.launch().then(browser => {
-                browser.newPage()
-                  .then(page => {
-                    page.goto('http://www.battledawn.com/?p=high_score')
-                      .then(resp => page.screenshot({path: 'images/recieve.png'}))
-                      .then(buffer => browser.close());
-                  });
-              }); */
