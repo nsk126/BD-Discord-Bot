@@ -9,8 +9,13 @@ const prefix = '??';
 
 bot.on('ready',() => {
     console.log(`Logged in as ${bot.user.tag}!`);
-    bot.user.setStatus('Online');
-    bot.user.setGame("BD-CE3 ??help");
+    bot.user.setPresence({
+        game: { 
+            name: 'CE-3',
+            type: 'WATCHING'
+        },
+        status: 'online'
+    })
 })
 
 bot.on('message', message =>{
