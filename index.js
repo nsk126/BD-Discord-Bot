@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
+const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
 const token = process.env.token;
 
+const path = 'images/recieve.png';
 const prefix = '??';
 
 bot.on('ready',() => {
@@ -24,6 +26,7 @@ bot.on('message', message =>{
                     {name: '??help', value: 'this menu !'},
                     {name: '??ava', value: 'shows your avatar'},
                     {name: '??BD', value: 'Battle-Dawn'},
+                    {name: '??boat', value: 'BD - Best of All times leaderboard'},
                     {name: '??dist', value: '??dist Cord1 Cord2'},
                     {name: '??mil', value: 'Military scan results: N number of scans '},
                     {name: '??adv', value: 'Advance scan results: N number of scans '},
@@ -120,6 +123,18 @@ bot.on('message', message =>{
             var Lbound = Math.max(...Lscan).toFixed(2);
             var Ubound = Math.min(...Uscan).toFixed(2);
             message.reply("\nMax units = " + Ubound + "\nMin units = " + Lbound);
+            break;
+        case 'boat':
+            (async () => {
+                const browser = await puppeteer.launch();
+                const page = await browser.newPage();
+                await page.goto('http://www.battledawn.com/?p=high_score');
+                await page.screenshot({path: 'images/recieve.png'});
+                await browser.close();
+                })();
+
+            const recimg = new Discord.MessageAttachment('images/recieve.png');  
+            message.channel.send(recimg);
             break;
 
     }
