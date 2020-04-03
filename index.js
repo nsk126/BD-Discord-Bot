@@ -36,6 +36,7 @@ bot.on('message', message =>{
                     {name: '??dist', value: '??dist Cord1 Cord2'},
                     {name: '??mil', value: 'Military scan results: N number of scans '},
                     {name: '??adv', value: 'Advance scan results: N number of scans '},
+                    {name: '??anime', value: 'weeb'}
                 );
             message.channel.send(embed);
             break;
