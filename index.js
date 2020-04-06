@@ -25,6 +25,14 @@ bot.on('message', message =>{
             case 'hi':
                 message.channel.send("Hello !");
                 break;
+            case 'about':
+                message.channel.send(
+                    "This bot is still under development.\n"+
+                    "The results this bot produces may not be 100% accurate,"+
+                    "Hence i suggest you do not completely depend on it.\n"+
+                    "Incase the bot is offline when required or is not functioning as it is supposed to, do message my discord Ruthless#8524"
+                );
+                break;
             case 'help':
                 const embed = new Discord.MessageEmbed()
                     .setColor('#FF0000')
@@ -38,7 +46,8 @@ bot.on('message', message =>{
                         {name: '?dist', value: 'Cord1 Cord2'},
                         {name: '?mil', value: 'Military scan results: N number of scans '},
                         {name: '?adv', value: 'Advance scan results: N number of scans '},
-                        {name: '?anime', value: 'weeb'}
+                        {name: '?anime', value: 'weeb'},
+                        {name: '?about', value: 'About this Bot'}
                     );
                 message.channel.send(embed);
                 break;
