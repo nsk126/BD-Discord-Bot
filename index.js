@@ -71,7 +71,7 @@ bot.on('message', message =>{
                 var y = cord1E - cord2E;
                 var d = x**2 + y**2;
                 d = Math.sqrt(d);
-                d = Math.round(d);
+                d = Math.ceil(d);
                 /*
                 Distance Log
                     Hostile ETA
