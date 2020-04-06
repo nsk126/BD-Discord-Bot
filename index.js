@@ -2,8 +2,7 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-// const token = process.env.token;
-const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XoYOeA.ne5oH2fvEiOLRECc1iGb1Z91dBM";
+const token = process.env.token;
 
 
 const path = 'images/recieve.png';
