@@ -33,7 +33,7 @@ bot.on('message', message =>{
                     "Incase the bot is offline when required or is not functioning as it is supposed to, do message my discord Ruthless#8524"
                 );
                 break;
-            case 'help':
+                case 'help':
                 const embed = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('All Commands')
@@ -157,6 +157,31 @@ bot.on('message', message =>{
 
                 const recimg = new Discord.MessageAttachment('images/recieve.png');  
                 message.channel.send(recimg);
+                break;
+            case 'op':
+                var cord1N = arg[1].substring(2,arg[1].length);
+                var cord1E = arg[2].substring(2,arg[2].length);
+                cord1N = parseInt(cord1N);
+                cord1E = parseInt(cord1E);
+
+                var ETA = parseInt(arg[3]);
+                var dist = 400 * ETA;
+
+                var angle = parseInt(arg[4]);
+                var deg = angle;
+
+                angle = angle * (Math.PI/180);
+
+                var cord2N = dist * Math.sin(angle);
+                var cord2E = dist * Math.cos(angle);
+                
+                cord2E = Math.floor(cord2E);
+                cord2N = Math.floor(cord2N);
+
+                cord2E = cord1E + cord2E;
+                cord2N = cord1N - cord2N;
+
+                message.reply("\nOp cords for ETA "+ ETA +"\nAt an angle of "+deg+"°\nN:"+cord2N+" E:"+cord2E);
                 break;
             
             case 'sim':
@@ -353,6 +378,7 @@ bot.on('message', message =>{
                 // console.log(ally);
                 // console.log(enemy);
                 message.reply(
+                    "*Initial Forces*\n" + 
                     "```\n" + 
                     "Ally"+ "\n"+
                     ally[0][0] + "\t" + ally[0][1] + "\t" + ally[0][2] + "\t" + ally[0][3] + "\t" + ally[0][4] + "\t" + ally[0][5] + "\t" + ally[0][6] + "\t" + ally[0][7] + "\t" + ally[0][8] + "\t" + "\n" + 
