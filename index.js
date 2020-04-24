@@ -100,7 +100,14 @@ bot.on('message', message =>{
 
                 var nukeETA = Math.max(hETA,6);
 
-                message.reply("\nDistance(Km) = " + d + "\n" +"Hostile ETA = " + hETA + "\nFriendly ETA = " + fETA + "\nRelic ETA(at 25% Squad speed) = "+RelicETA + "\nNuke ETA = "+ nukeETA);
+                var replydist = "";
+                replydist += "\nDistance(Km) = " + d;
+                replydist += "\nHostile ETA = " + hETA;
+                replydist += "\nFriendly ETA = " + fETA;
+                replydist += "\nRelic ETA(at 25% Squad speed) = " + RelicETA;
+                replydist += "\nNuke ETA = "+ nukeETA;
+
+                message.reply(replydist);
                 break;
 
             case 'mil':
