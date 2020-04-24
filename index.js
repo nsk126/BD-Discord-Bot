@@ -33,23 +33,36 @@ bot.on('message', message =>{
                     "Incase the bot is offline when required or is not functioning as it is supposed to, do message my discord Ruthless#8524"
                 );
                 break;
-                case 'help':
-                const embed = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setTitle('All Commands')
-                    .addFields(
-                        {name: '?hi', value: 'Hello !'},
-                        {name: '?help', value: 'this menu !'},
-                        {name: '?ava', value: 'shows your avatar'},
-                        {name: '?BD', value: 'Battle-Dawn'},
-                        {name: '?boat', value: 'BD - Best of All times leaderboard'},
-                        {name: '?dist', value: 'Cord1 Cord2'},
-                        {name: '?mil', value: 'Military scan results: N number of scans '},
-                        {name: '?adv', value: 'Advance scan results: N number of scans '},
-                        {name: '?anime', value: 'weeb'},
-                        {name: '?about', value: 'About this Bot'}
-                    );
-                message.channel.send(embed);
+            case 'help':
+                // const embed = new Discord.MessageEmbed()
+                //     .setColor('#FF0000')
+                //     .setTitle('All Commands')
+                //     .addFields(
+                //         {name: '?hi', value: 'Hello !'},
+                //         {name: '?help', value: 'this menu !'},
+                //         {name: '?ava', value: 'shows your avatar'},
+                //         {name: '?BD', value: 'Battle-Dawn'},
+                //         {name: '?boat', value: 'BD - Best of All times leaderboard'},
+                //         {name: '?dist', value: 'Cord1 Cord2'},
+                //         {name: '?mil', value: 'Military scan results: N number of scans '},
+                //         {name: '?adv', value: 'Advance scan results: N number of scans '},
+                //         {name: '?anime', value: 'weeb'},
+                //         {name: '?about', value: 'About this Bot'}
+                //     );
+                var helptxt = "```";
+                helptxt += "?hi : Hello !\n";
+                helptxt += "?help : Shows this menu.\n";
+                helptxt += "?BD : Returns a link to BattleDawn Login page.\n";
+                helptxt += "?boat : Returns an image of the current Best Of All Time score page.\n";
+                helptxt += "?dist : Distance Calculator w/ some added tools\n";
+                helptxt += "\t\t Aruguments ---> Cords1 Cords2\n";
+                helptxt += "If Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
+                helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
+                helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
+                helptxt += "?about : About this Discord Bot.\n";
+                helptxt += "```";
+                
+                message.channel.send(helptxt);
                 break;
             case 'ava':
                 message.reply(message.author.displayAvatarURL());
