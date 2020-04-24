@@ -107,6 +107,14 @@ bot.on('message', message =>{
                 replydist += "\nRelic ETA(at 25% Squad speed) = " + RelicETA;
                 replydist += "\nNuke ETA = "+ nukeETA;
 
+                if(arg[5] == "-radar"){
+                    if(d <= 1800){
+                        replydist += "\nIn Radar range."
+                    }else{
+                        replydist += "\nNot in Radar range."
+                    }
+                }
+
                 message.reply(replydist);
                 break;
 
