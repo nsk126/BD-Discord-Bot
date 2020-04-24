@@ -100,8 +100,8 @@ bot.on('message', message =>{
 
                 var nukeETA = Math.max(hETA,6);
 
-                var replydist = "";
-                replydist += "\nDistance(Km) = " + d;
+                var replydist = "```";
+                replydist += "Distance(Km) = " + d;
                 replydist += "\nHostile ETA = " + hETA;
                 replydist += "\nFriendly ETA = " + fETA;
                 replydist += "\nRelic ETA(at 25% Squad speed) = " + RelicETA;
@@ -114,7 +114,7 @@ bot.on('message', message =>{
                         replydist += "\nNot in Radar range."
                     }
                 }
-
+                replydist += "```";
                 message.reply(replydist);
                 break;
 
