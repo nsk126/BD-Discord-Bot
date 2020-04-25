@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = process.env.token;
-
+// const token = process.env.token;
+const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XqQJJw.MFfQOuVmH8P_aSFGiNwc2gRfbjA";
 
 const path = 'images/recieve.png';
 const prefix = '?';
@@ -26,7 +26,8 @@ bot.on('message', message =>{
                 message.channel.send("Hello !");
                 break;
             case 'about':
-                var aboutxt = "```";
+                var aboutxt = "```css\n";
+                aboutxt += "[About]\n";
                 aboutxt += "This bot is still under development.\n";
                 aboutxt += "The results this bot produces may not be 100% accurate,\n";
                 aboutxt += "Hence i suggest you do not completely depend on it.\n";
@@ -35,14 +36,16 @@ bot.on('message', message =>{
                 message.channel.send(aboutxt);
                 break;
             case 'help':
-                var helptxt = "```";
+                var helptxt = "```css\n";
+                helptxt += "[Banshee - BD commands - Help]\n";
+                helptxt += "\n";
                 helptxt += "?hi : Hello !\n";
                 helptxt += "?help : Shows this menu.\n";
                 helptxt += "?BD : Returns a link to BattleDawn Login page.\n";
                 helptxt += "?boat : Returns an image of the current Best Of All Time score page.\n";
                 helptxt += "?dist : Distance Calculator w/ some added tools\n";
-                helptxt += "\t\t Aruguments ---> Cords1 Cords2\n";
-                helptxt += "If Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
+                helptxt += "\t\tAruguments ---> Cords1 Cords2 (optinal -radar)\n";
+                helptxt += "\t\tIf Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
                 helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
                 helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
                 helptxt += "?about : About this Discord Bot.\n";
