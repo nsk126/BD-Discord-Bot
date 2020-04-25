@@ -143,7 +143,7 @@ bot.on('message', message =>{
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
-                milop += "```";
+                milop += "\n```";
                 
                 message.reply(milop);
                 break;
@@ -169,6 +169,7 @@ bot.on('message', message =>{
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
                 advop += "\nMin units = " + Lbound; 
+                advop += "\n```"
 
                 message.reply(advop);
                 break;
