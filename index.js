@@ -139,7 +139,13 @@ bot.on('message', message =>{
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);;
                 var Ubound = Math.min(...Uscan).toFixed(2);;
-                message.reply("\nMax units = " + Ubound + "\nMin units = " + Lbound);
+                
+                var milop = "```css";
+                milop += "\nMax units = " + Ubound;
+                milop += "\nMin units = " + Lbound;
+                milop += "```";
+                
+                message.reply(milop);
                 break;
             case 'adv':
                 // adv scan accuracy +-25% 
@@ -159,7 +165,12 @@ bot.on('message', message =>{
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);
                 var Ubound = Math.min(...Uscan).toFixed(2);
-                message.reply("\nMax units = " + Ubound + "\nMin units = " + Lbound);
+
+                var advop = "```css";
+                advop += "\nMax units = " + Ubound;
+                advop += "\nMin units = " + Lbound; 
+
+                message.reply(advop);
                 break;
             case 'boat':
                 (async () => {
