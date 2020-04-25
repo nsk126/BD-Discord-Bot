@@ -102,8 +102,8 @@ bot.on('message', message =>{
 
                 var nukeETA = Math.max(hETA,6);
 
-                var replydist = "```";
-                replydist += "Distance(Km) = " + d;
+                var replydist = "```css";
+                replydist += "\nDistance(Km) = " + d;
                 replydist += "\nHostile ETA = " + hETA;
                 replydist += "\nFriendly ETA = " + fETA;
                 replydist += "\nRelic ETA(at 25% Squad speed) = " + RelicETA;
@@ -207,8 +207,14 @@ bot.on('message', message =>{
 
                 cord2E = cord1E + cord2E;
                 cord2N = cord1N - cord2N;
+                
+                var optxt = "```css";
+                optxt += "\nOp cords for ETA "+ ETA;
+                optxt += "\nAt an angle of "+deg;
+                optxt += "°\nN:"+cord2N+" E:"+cord2E;
+                optxt += "```";
 
-                message.reply("\nOp cords for ETA "+ ETA +"\nAt an angle of "+deg+"°\nN:"+cord2N+" E:"+cord2E);
+                message.reply(optxt);
                 break;
             
             case 'sim':
