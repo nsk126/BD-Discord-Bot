@@ -123,9 +123,12 @@ bot.on('message', message =>{
                 var scan = [];
                 var Lscan = [];
                 var Uscan = [];
+                var sample_mean = 0;
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
+                    sample_mean += scan[i];
                 }
+                sample_mean = sample_mean / (arg.length-1);
                 // console.log(scan);
                 for(i = 0;i < arg.length-1; i++){
                     Lscan[i] = scan[i] * 0.66;
@@ -139,6 +142,7 @@ bot.on('message', message =>{
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
+                milop += "\nSample mean = " + sample_mean;
                 milop += "\n```";
                 
                 message.reply(milop);
