@@ -46,7 +46,9 @@ bot.on('message', message =>{
                 helptxt += "\t\tAruguments ---> Cords1 Cords2 (optinal -radar)\n";
                 helptxt += "\t\tIf Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
                 helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
+                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.";
                 helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
+                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.";
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "```";      
                 message.channel.send(helptxt);
@@ -157,14 +159,17 @@ bot.on('message', message =>{
                 var scan = [];
                 var Lscan = [];
                 var Uscan = [];
+                var sample_mean = 0;
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
+                    sample_mean += parseInt(arg[i+1]);
                 }
                 // console.log(scan);
                 for(i = 0;i < arg.length-1; i++){
                     Lscan[i] = scan[i] * 0.80;
                     Uscan[i] = scan[i] * 1.33;
                 }
+                sample_mean = sample_mean / (arg.length-1);
                 // console.log(Lscan);
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);
@@ -173,6 +178,9 @@ bot.on('message', message =>{
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
                 advop += "\nMin units = " + Lbound; 
+                if(arg.length - 1 > 2){
+                    advop += "\nSample mean = " + sample_mean;
+                }
                 advop += "\n```"
 
                 message.reply(advop);
