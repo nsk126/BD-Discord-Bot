@@ -46,9 +46,9 @@ bot.on('message', message =>{
                 helptxt += "\t\tAruguments ---> Cords1 Cords2 (optinal -radar)\n";
                 helptxt += "\t\tIf Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
                 helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
-                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.";
+                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
-                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.";
+                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "```";      
                 message.channel.send(helptxt);
