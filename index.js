@@ -146,7 +146,7 @@ bot.on('message', message =>{
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
-                if(arg.length - 1 > 2){
+                if(arg.length > 2){
                     milop += "\nSample mean = " + sample_mean;
                 }
                 milop += "\n```";
@@ -178,7 +178,7 @@ bot.on('message', message =>{
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
                 advop += "\nMin units = " + Lbound; 
-                if(arg.length - 1 > 2){
+                if(arg.length > 2){
                     advop += "\nSample mean = " + sample_mean;
                 }
                 advop += "\n```"
