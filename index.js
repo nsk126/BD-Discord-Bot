@@ -144,7 +144,7 @@ bot.on('message', message =>{
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
-                milop += "\n" + arg.length;
+                milop += "\nSample mean = " + sample_mean;
                 
                 milop += "\n```";
                 
