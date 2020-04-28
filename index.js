@@ -97,16 +97,12 @@ bot.on('message', message =>{
                 // console.log(hETA);
                 var fETA = Math.ceil(hETA/2);
                 fETA = Math.max(fETA,2);
-
-                var RelicETA = hETA * 4;
-
                 var nukeETA = Math.max(hETA,6);
 
                 var replydist = "```css";
                 replydist += "\nDistance(Km) = " + d;
                 replydist += "\nHostile ETA = " + hETA;
                 replydist += "\nFriendly ETA = " + fETA;
-                replydist += "\nRelic ETA(at 25% Squad speed) = " + RelicETA;
                 replydist += "\nNuke ETA = "+ nukeETA;
 
                 if(arg[5] == "-radar"){
