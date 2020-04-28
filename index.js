@@ -127,7 +127,7 @@ bot.on('message', message =>{
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
                     sample_mean += parseInt(arg[i+1]);
-                    console.log(sample_mean);
+                    // console.log(sample_mean);
                 }
                 
                 // console.log(scan);
@@ -145,7 +145,6 @@ bot.on('message', message =>{
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
                 milop += "\nSample mean = " + sample_mean;
-                
                 milop += "\n```";
                 
                 message.reply(milop);
