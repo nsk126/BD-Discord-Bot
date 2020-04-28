@@ -126,14 +126,16 @@ bot.on('message', message =>{
                 var sample_mean = 0;
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
-                    sample_mean += scan[i];
+                    sample_mean += arg[i+1];
                 }
-                sample_mean = sample_mean / (arg.length-1);
+                
                 // console.log(scan);
                 for(i = 0;i < arg.length-1; i++){
                     Lscan[i] = scan[i] * 0.66;
                     Uscan[i] = scan[i] * 2.00;
                 }
+
+                sample_mean = sample_mean / (arg.length);
                 // console.log(Lscan);
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);;
@@ -143,6 +145,8 @@ bot.on('message', message =>{
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
                 milop += "\nSample mean = " + sample_mean;
+                milop += "\n" + arg.length;
+                
                 milop += "\n```";
                 
                 message.reply(milop);
