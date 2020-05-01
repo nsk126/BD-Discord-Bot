@@ -81,6 +81,8 @@ bot.on('message', message =>{
                 
                 var x = cord1N - cord2N;
                 var y = cord1E - cord2E;
+
+                
                 var d = x**2 + y**2;
                 d = Math.sqrt(d);
                 d = Math.ceil(d);
@@ -103,11 +105,15 @@ bot.on('message', message =>{
                 var nukeETA = Math.max(hETA,6);
 
                 var replydist = "```css";
-                replydist += "\nDistance(Km) = " + d;
-                replydist += "\nHostile ETA = " + hETA;
-                replydist += "\nFriendly ETA = " + fETA;
-                replydist += "\nNuke ETA = "+ nukeETA;
-
+                if(x == 0 && y == 0){
+                    replydist += "\n Same cords !\n Please Try Again !" 
+                }else{
+                    replydist += "\nDistance(Km) = " + d;
+                    replydist += "\nHostile ETA = " + hETA;
+                    replydist += "\nFriendly ETA = " + fETA;
+                    replydist += "\nNuke ETA = "+ nukeETA;
+                }
+                
                 if(arg[5] == "-radar"){
                     if(d <= 1800){
                         replydist += "\nIn Radar range."
