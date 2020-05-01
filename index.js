@@ -18,6 +18,7 @@ bot.on('ready',() => {
 })
 
 bot.on('message', message =>{
+    if (!message.guild) return;
     if(message.content[0] == prefix){
         let arg = message.content.substring(prefix.length).split(" ");
         switch(arg[0]){
