@@ -44,12 +44,12 @@ bot.on('message', message =>{
                 helptxt += "?BD : Returns a link to BattleDawn Login page.\n";
                 helptxt += "?boat : Returns an image of the current Best Of All Time score page.\n";
                 helptxt += "?dist : Distance Calculator w/ some added tools\n";
-                helptxt += "\t\tAruguments ---> Cords1 Cords2 (optinal -radar)\n";
-                helptxt += "\t\tIf Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
+                helptxt += "\t\t-Aruguments ---> Cords1 Cords2 (optinal -radar)\n";
+                helptxt += "\t\t-If Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
                 helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
-                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
+                helptxt += "\t\t-If more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
-                helptxt += "\t\tIf more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
+                helptxt += "\t\t-If more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "```";      
                 message.channel.send(helptxt);
