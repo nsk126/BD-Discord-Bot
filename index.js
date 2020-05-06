@@ -62,11 +62,11 @@ bot.on('message', message =>{
                 const attachment = new Discord.MessageAttachment('images/anime-girl.jpg');
                 message.channel.send(attachment);
                 break;
-            case 'BD':
+            case 'bd':
                 const BD_link = 'http://battledawn.com/client/game.php?portal=earthMarsFantasy';
                 message.channel.send(BD_link);
                 break;
-            case 'BG':
+            case 'bg':
                 const BG_link = 'http://battlegalaxy.com/battledawn/client/game.php?portal=space';
                 message.channel.send(BD_link);
                 break;
