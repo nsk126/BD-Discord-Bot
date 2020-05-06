@@ -68,7 +68,7 @@ bot.on('message', message =>{
                 break;
             case 'bg':
                 const BG_link = 'http://battlegalaxy.com/battledawn/client/game.php?portal=space';
-                message.channel.send(BD_link);
+                message.channel.send(BG_link);
                 break;
             case 'dist':
                 // N:2697 E:9598 <- example arg
