@@ -21,7 +21,7 @@ bot.on('message', message =>{
     if (!message.guild) return;
     if(message.content[0] == prefix){
         let arg = message.content.substring(prefix.length).split(" ");
-        switch(arg[0]){
+        switch(arg[0].toLowerCase()){
             case 'hi':
                 message.channel.send("Hello !");
                 break;
@@ -42,6 +42,7 @@ bot.on('message', message =>{
                 helptxt += "?hi : Hello !\n";
                 helptxt += "?help : Shows this menu.\n";
                 helptxt += "?BD : Returns a link to BattleDawn Login page.\n";
+                helptxt += "?BG : Returns a link to BattleGalaxy Login page.\n";
                 helptxt += "?boat : Returns an image of the current Best Of All Time score page.\n";
                 helptxt += "?dist : Distance Calculator w/ some added tools\n";
                 helptxt += "\t\t-Aruguments ---> Cords1 Cords2 (optinal -radar)\n";
@@ -63,6 +64,10 @@ bot.on('message', message =>{
                 break;
             case 'BD':
                 const BD_link = 'http://battledawn.com/client/game.php?portal=earthMarsFantasy';
+                message.channel.send(BD_link);
+                break;
+            case 'BG':
+                const BG_link = 'http://battlegalaxy.com/battledawn/client/game.php?portal=space';
                 message.channel.send(BD_link);
                 break;
             case 'dist':
