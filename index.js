@@ -83,6 +83,15 @@ bot.on('message', message =>{
                 cord1E = parseInt(cord1E);
                 cord2N = parseInt(cord2N);
                 cord2E = parseInt(cord2E);
+
+                if(typeof(cord1N) != 'number' || typeof(cord1E) != 'number' || typeof(cord2N) != 'number' || typeof(cord2E) != 'number'){
+                    let err = "";
+                    err += "```css";
+                    err += "Error! Wrong Cordinate format!";
+                    err += "```";
+                    message.reply(err);
+                    break;
+                }
                 
                 var x = cord1N - cord2N;
                 var y = cord1E - cord2E;
