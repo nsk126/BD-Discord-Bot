@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = process.env.token;
+// const token = process.env.token;
+const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XqQTPA.vq_uL-kaHSjy4zbdkiZJaTKp2gc";
 
 const path = 'images/recieve.png';
 const prefix = '?';
@@ -74,8 +75,18 @@ bot.on('message', message =>{
                 // N:2697 E:9598 <- example arg
                 // N:6940 E:37334 N:5972 E:36621
 
-                //check for proper format
-
+                //check for proper format                
+                for(let i = 0;i<arg.length;i++){
+                    if(arg[i] == ""){
+                        let err = "";
+                        err += "```css";
+                        err += "\nError.\nWrong Format."
+                        err += "\n```"
+                        message.reply(err);
+                        return;
+                    }
+                }
+                
                 var cord1N = arg[1].substring(2,arg[1].length);
                 var cord1E = arg[2].substring(2,arg[2].length);
                 var cord2N = arg[3].substring(2,arg[3].length);
