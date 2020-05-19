@@ -90,7 +90,7 @@ bot.on('message', message =>{
                     err += "Error! Wrong Cordinate format!";
                     err += "```";
                     message.reply(err);
-                    break;
+                    return;
                 }
                 
                 var x = cord1N - cord2N;
