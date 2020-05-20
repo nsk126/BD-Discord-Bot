@@ -45,7 +45,9 @@ bot.on('message', message =>{
                 helptxt += "?BG : Returns a link to BattleGalaxy Login page.\n";
                 helptxt += "?boat : Returns an image of the current Best Of All Time score page.\n";
                 helptxt += "?dist : Distance Calculator w/ some added tools\n";
-                helptxt += "\t\t-Aruguments ---> Cords1 Cords2 (optinal -radar)\n";
+                helptxt += "\t\t-Aruguments ---> Cords1 Cords2 (optinal -radar)(to check if one cordinate is in radar range of the other cordinate.)\n";
+                helptxt += "\t\t-E.g: ?dist N:1111 E:22222 N:3333 E:44444\n";
+                helptxt += "\t\t-Note: additonal whitespace may result in an error\n";
                 helptxt += "\t\t-If Cordinates are not in N:xxxxx E:xxxxx format, this tool may fail.\n";
                 helptxt += "?mil : Returns the upper & lower bounds of a military scan report.\n";
                 helptxt += "\t\t-If more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
@@ -167,6 +169,7 @@ bot.on('message', message =>{
                 var Lbound = Math.max(...Lscan).toFixed(2);;
                 var Ubound = Math.min(...Uscan).toFixed(2);;
                 
+                Lbound = Math.max(Lbound,1.00);
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
@@ -198,6 +201,8 @@ bot.on('message', message =>{
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);
                 var Ubound = Math.min(...Uscan).toFixed(2);
+
+                Lbound = Math.max(Lbound,1.00);
 
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
