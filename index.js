@@ -85,15 +85,23 @@ bot.on('message', message =>{
                         err += "\n```"
                         message.reply(err);
                         return;
-                    }
-                    if(arg[1] == null || arg[2] == null || arg[3] == null || arg[4] == null){
-                        let err = "";
-                        err += "```css";
-                        err += "\nError.\nWrong Format."
-                        err += "\n```"
-                        message.reply(err);
-                        return;
-                    }
+                    }                    
+                }
+                if(arg[1] == null || arg[2] == null || arg[3] == null || arg[4] == null){
+                    let err = "";
+                    err += "```css";
+                    err += "\nError.\nWrong Format."
+                    err += "\n```"
+                    message.reply(err);
+                    return;
+                }
+                if(arg[1].slice(0,2) != "N:" || arg[2].slice(0,2) != "E:" || arg[3].slice(0,2) != "N:" || arg[4].slice(0,2) != "E:"){
+                    let err = "";
+                    err += "```css";
+                    err += "\nError.\nWrong Format."
+                    err += "\n```"
+                    message.reply(err);
+                    return;
                 }
                 
                 var cord1N = arg[1].substring(2,arg[1].length);
