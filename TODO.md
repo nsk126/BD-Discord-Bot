@@ -1,6 +1,6 @@
 # Ideas
     - Reminder app for Eots
-    - Shield countdown
+    - Shield countdown?
     - complete HOF
     - Discourse Forum Updates
 
