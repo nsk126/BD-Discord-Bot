@@ -103,6 +103,8 @@ bot.on('message', message =>{
                     message.reply(err);
                     return;
                 }
+
+                // Checks done
                 
                 var cord1N = arg[1].substring(2,arg[1].length);
                 var cord1E = arg[2].substring(2,arg[2].length);
@@ -164,10 +166,22 @@ bot.on('message', message =>{
                 // console.log(arg.length);
                 // Mil scan accuracy +-50% 
                 // Wiki says 66% to 200% Standard Deviation
+
                 var scan = [];
                 var Lscan = [];
                 var Uscan = [];
                 var sample_mean = 0;
+                for(i = 0;i < arg.length-1; i++){
+                    if(isNaN(arg[i+1])){
+                        let err = "";
+                        err += "```css";
+                        err += "\nIncorrect Input."
+                        err += "\n```"
+                        message.reply(err);
+                        return;
+                    }
+                
+                }
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
                     sample_mean += parseInt(arg[i+1]);
