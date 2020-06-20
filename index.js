@@ -54,6 +54,11 @@ bot.on('message', message =>{
                 helptxt += "?adv : Returns the upper & lower bounds of an advance scan report.\n";
                 helptxt += "\t\t-If more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?about : About this Discord Bot.\n";
+                helptxt += "\n\nTo add this bot to your personal servers,\n"
+                helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>"
+                
+
+                
                 helptxt += "```";      
                 message.channel.send(helptxt);
                 break;
