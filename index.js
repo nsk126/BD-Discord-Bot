@@ -200,11 +200,17 @@ bot.on('message', message =>{
                 }
 
                 sample_mean = sample_mean / (arg.length-1);
+                sample_mean = Math.round(sample_mean);
+                // console.log(Lscan);
+                // console.log(Uscan);
 
                 var Lbound = Math.max(...Lscan).toFixed(2);;
                 var Ubound = Math.min(...Uscan).toFixed(2);;
+
+                Lbound = Math.round(Lbound);
+                Ubound = Math.round(Ubound);
                 
-                Lbound = Math.max(Lbound,1.00);
+                
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
@@ -215,6 +221,7 @@ bot.on('message', message =>{
                 
                 message.reply(milop);
                 break;
+
             case 'adv':
                 // adv scan accuracy +-25% 
                 // Wiki says 80% to 130% Standard Deviation
@@ -232,12 +239,14 @@ bot.on('message', message =>{
                     Uscan[i] = scan[i] * 1.33;
                 }
                 sample_mean = sample_mean / (arg.length-1);
+                sample_mean = Math.round(sample_mean);
                 // console.log(Lscan);
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);
                 var Ubound = Math.min(...Uscan).toFixed(2);
-
-                Lbound = Math.max(Lbound,1.00);
+                
+                Lbound = Math.round(Lbound);
+                Ubound = Math.round(Ubound);
 
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
@@ -291,6 +300,10 @@ bot.on('message', message =>{
                 optxt += "```";
 
                 message.reply(optxt);
+                break;
+
+            case 'opspot':
+
                 break;
             
             case 'sim':
