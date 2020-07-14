@@ -55,7 +55,7 @@ bot.on('message', message =>{
                 helptxt += "\t\t-If more than 1 scan result is given as an argument, sample mean of the scans is returned.\n";
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "?op : Returns cordinates of perfect op cords with a provided ETA and angle\n";
-                helptxt += "\t\t-Eg: ?op N:1111 E:22222 2 30 <----- Here the first 2 arguments are reserved for the origin cordinates, the 2nd argument stands for the ETA(friendly) and the 3rd argument stands for the Angle in counterclockwise fashion.\n"
+                helptxt += "\t\t-Eg: ?op N:1111 E:22222 2 30 <----- Here the first 2 arguments are reserved for the origin cordinates, the 3rd argument stands for the ETA(friendly) and the 4th argument stands for the Angle in counterclockwise fashion.\n"
                 helptxt += "\n\nTo add this bot to your personal servers,\n"
                 helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>"
                 helptxt += "\n\nBanshee's Update logs :  https://pastebin.com/8vQy23Hj";
