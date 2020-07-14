@@ -56,8 +56,9 @@ bot.on('message', message =>{
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "\n\nTo add this bot to your personal servers,\n"
                 helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>"
+                helptxt += "\n\nBanshee's Update logs :  https://pastebin.com/8vQy23Hj";
                 
-
+               
                 
                 helptxt += "```";      
                 message.channel.send(helptxt);
