@@ -405,9 +405,19 @@ bot.on('message', message =>{
                 optxt += "\n```";
 
                 message.reply(optxt);
-                
-                
-                
+                break;
+
+            case 'shield':
+                var tick = arg[1];
+
+                var optxt = "```css";
+                optxt += "\n3 Tick Sheild - "+(arg[1]+2);
+                optxt += "\n6 Tick Sheild - "+(arg[1]+5);
+                optxt += "\n9 Tick Sheild - "+(arg[1]+8);
+                optxt += "\n12 Tick Sheild - "+(arg[1]+11);
+                optxt += "\n```";
+
+                message.reply(optxt);
                 break;
             
             
