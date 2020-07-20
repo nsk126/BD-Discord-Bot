@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
 const bot = new Discord.Client();
 const token = process.env.token;
 
+
 const path = 'images/recieve.png';
 const prefix = '?';
 
@@ -300,13 +301,113 @@ bot.on('message', message =>{
                 optxt += "\nOp cords for ETA "+ ETA;
                 optxt += "\nAt an angle of "+deg;
                 optxt += "°\nN:"+cord2N+" E:"+cord2E;
-                optxt += "```";
+                optxt += "\n```";
 
                 message.reply(optxt);
                 break;
 
             case 'opspot':
+                // console.log(arg);
+                // console.log(arg.length);
+                
+                var totalcords = (arg.length - 1)/2;
+                // console.log("Cords = " + totalcords);
 
+                // example cords 
+                // N:3109 E:40272 N:3149 E:40395 N:3337 E:40421 N:3350 E:40211 N:3299 E:40066 N:3138 E:40102
+                
+                var Cords_given = arg.splice(1,arg.length);
+                // console.log(Cords_given);
+
+                //sorting cords N and E
+                var N_cords = [];
+                var E_cords = [];
+                
+                for(i=0;i<totalcords;i++){
+                    N_cords.push(Cords_given[2*i]);
+                }
+                // console.log(N_cords);
+                for(i=0;i<totalcords;i++){
+                    E_cords.push(Cords_given[2*i+1]);
+                }
+                // console.log(E_cords);
+                
+                // var temp = N_cords[0];
+                // console.log(temp);
+                // console.log(typeof(temp));
+                // var temp2 = temp.slice(1,2)
+                // console.log(temp2);
+
+
+                for(i=0;i<N_cords.length;i++){
+                    N_cords[i] = N_cords[i].slice(2,N_cords[i].length);
+                }
+                // console.log(N_cords);
+                
+                for(i=0;i<E_cords.length;i++){
+                    E_cords[i] = E_cords[i].slice(2,E_cords[i].length);
+                }
+                // console.log(E_cords);
+
+
+                //max and mins of cords
+                var maxN = Math.max(...N_cords);
+                var minN = Math.min(...N_cords);
+                var maxE = Math.max(...E_cords);
+                var minE = Math.min(...E_cords);
+                
+                // console.log(maxN);
+                // console.log(maxE);
+                // console.log(minN);
+                // console.log(minE);
+
+                const Gap = 124;
+
+                var x,y;
+                var foundx,foundy;
+
+                for(x = minE; x < maxE; x++){
+                    for(y = minN; y < maxN; y++){
+                        
+                        var point_dist = [];
+                        //formula for dist d = sqrt((a-b)^2 + (c-d)^2)
+                        
+                        for(i = 0;i<totalcords;i++){
+                            point_dist[i] = Math.sqrt(((x - E_cords[i])**2) + ((y-N_cords[i])**2));
+                        }
+                        
+                        function Space(dist) {
+                            return dist > 124;
+                        }
+
+                        if(point_dist.every(Space)){
+                            foundx = x;
+                            foundy = y;
+                            
+                            //setting x and y to their limits to break all loops
+                            x = maxE;
+                            y = maxN;
+                            break;
+                        }
+                        
+                    }
+                }
+
+                // console.log("N:"+foundy+" "+"E:"+foundx);
+
+                var optxt = "```css";
+                if(isNaN(foundy)==false && isNaN(foundx)==false){
+                    optxt += "\nOp spot found";
+                    optxt += "\n" + "N:"+foundy+" "+"E:"+foundx;
+                }else{
+                    optxt += "\nOp spot not found";
+                }                
+                optxt += "\n```";
+
+                message.reply(optxt);
+                
+                
+                
                 break;
             
             
