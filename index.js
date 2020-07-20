@@ -2,7 +2,9 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = process.env.token;
+// const token = process.env.token;
+
+const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XxYGfQ.eFXOlIsH_jaujLvUV_whBL4k87M";
 
 
 const path = 'images/recieve.png';
@@ -275,33 +277,43 @@ bot.on('message', message =>{
                 message.channel.send(recimg);
                 break;
             case 'op':
-                var cord1N = arg[1].substring(2,arg[1].length);
-                var cord1E = arg[2].substring(2,arg[2].length);
-                cord1N = parseInt(cord1N);
-                cord1E = parseInt(cord1E);
-
-                var ETA = parseInt(arg[3]);
-                var dist = 400 * ETA;
-
-                var angle = parseInt(arg[4]);
-                var deg = angle;
-
-                angle = angle * (Math.PI/180);
-
-                var cord2N = dist * Math.sin(angle);
-                var cord2E = dist * Math.cos(angle);
-                
-                cord2E = Math.floor(cord2E);
-                cord2N = Math.floor(cord2N);
-
-                cord2E = cord1E + cord2E;
-                cord2N = cord1N - cord2N;
-                
-                var optxt = "```css";
-                optxt += "\nOp cords for ETA "+ ETA;
-                optxt += "\nAt an angle of "+deg;
-                optxt += "°\nN:"+cord2N+" E:"+cord2E;
-                optxt += "\n```";
+                console.log(arg.length);
+                //check for input errors
+                var optxt = "";
+                if(arg.length==5){
+                    var cord1N = arg[1].substring(2,arg[1].length);
+                    var cord1E = arg[2].substring(2,arg[2].length);
+                    cord1N = parseInt(cord1N);
+                    cord1E = parseInt(cord1E);
+    
+                    var ETA = parseInt(arg[3]);
+                    var dist = 400 * ETA;
+    
+                    var angle = parseInt(arg[4]);
+                    var deg = angle;
+    
+                    angle = angle * (Math.PI/180);
+    
+                    var cord2N = dist * Math.sin(angle);
+                    var cord2E = dist * Math.cos(angle);
+                    
+                    cord2E = Math.floor(cord2E);
+                    cord2N = Math.floor(cord2N);
+    
+                    cord2E = cord1E + cord2E;
+                    cord2N = cord1N - cord2N;
+                    
+                    optxt = "```css";
+                    optxt += "\nOp cords for ETA "+ ETA;
+                    optxt += "\nAt an angle of "+deg;
+                    optxt += "°\nN:"+cord2N+" E:"+cord2E;
+                    optxt += "\n```";
+                }else{
+                    optxt = "```css";
+                    optxt += "\nWrong input format";
+                    optxt += "\n```";
+                }
+               
 
                 message.reply(optxt);
                 break;
