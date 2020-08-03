@@ -450,7 +450,7 @@ bot.on('message', message =>{
                 var min_sp = (op_ct - 2) * agent_count;
 
                 var optxt = "```css";
-                optxt += "\nMinimum Spy Prot = " + min_sp;
+                optxt += "\nMax Spy Prot = " + min_sp;
                 optxt += "\nFor " + agent_count + " Agents";
                 optxt += "\nFor Outpost CT = " + op_ct;
                 optxt += "\n```";
