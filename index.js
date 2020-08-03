@@ -452,6 +452,7 @@ bot.on('message', message =>{
                 var optxt = "```css";
                 optxt += "\nMinimum Spy Prot = " + min_sp;
                 optxt += "\nFor " + agent_count + " Agents";
+                optxt += "\nFor Outpost CT = " + op_ct;
                 optxt += "\n```";
 
                 message.reply(optxt);
