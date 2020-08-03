@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const puppeteer = require('puppeteer');
 
 const bot = new Discord.Client();
-const token = process.env.token;
+// const token = process.env.token;
+const token = "Njk0MDczNDU1MTIwNzQ0NDU4.XxYHxQ.HTMysoDlILX16gqpMQbEuCH9WTI";
 
 
 const path = 'images/recieve.png';
@@ -19,6 +20,10 @@ bot.on('ready',() => {
 })
 
 bot.on('message', message =>{
+    console.log(message.content);
+    console.log(message.author);
+    console.log(message.channel);
+    
     if (!message.guild) return;
     if(message.content[0] == prefix){
         let arg = message.content.substring(prefix.length).split(" ");
@@ -429,6 +434,31 @@ bot.on('message', message =>{
 
                 message.reply(optxt);
                 break;
+            case 'spyprot':
+                //args are OP_CT, Number of agents
+                var op_ct = arg[1];
+                var agent_count;
+                if (arg[2] == null) {
+                    //by default 10 agents are considered.
+                    agent_count = 10;
+                } else {
+                    agent_count = arg[2]; 
+                }
+                //working
+                //spies need +2 op ct to plant agent
+                // (opct - 2) * agentcount
+
+                var min_sp = (op_ct - 2) * agent_count;
+
+                var optxt = "```css";
+                optxt += "\nMinimum Spy Prot = " + min_sp;
+                optxt += "\nFor " + agent_count + " Agents";
+                optxt += "\n```";
+
+                message.reply(optxt);
+                
+                break;
+
             
             
 
