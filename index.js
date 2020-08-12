@@ -163,14 +163,22 @@ bot.on('message', message =>{
                     replydist += "\nFriendly ETA = " + fETA;
                     replydist += "\nNuke ETA = "+ nukeETA;
                 }
-                
-                if(arg[5] == "-radar"){
-                    if(d <= 1800){
-                        replydist += "\nIn Radar range."
-                    }else{
-                        replydist += "\nNot in Radar range."
-                    }
+
+                switch (arg[5]) {
+                    case "-radar":
+                        if (d <= 1800) {
+                            replydist += "\nIn Radar range."
+                        } else {
+                            replydist += "\nNot in Radar range."
+                        }
+                        break;
+                    case "-relic":
+                        replydist += "\nRelic ETA = " + Math.round(d / 75);
+                        break;
+                    default:
+                        break;
                 }
+
                 replydist += "```";
                 message.reply(replydist);
                 break;
@@ -325,10 +333,7 @@ bot.on('message', message =>{
                 // console.log(arg.length);
                 
                 var totalcords = (arg.length - 1)/2;
-                // console.log("Cords = " + totalcords);
-
-                // example cords 
-                // N:3109 E:40272 N:3149 E:40395 N:3337 E:40421 N:3350 E:40211 N:3299 E:40066 N:3138 E:40102
+                // console.log("Cords = " + totalcords
                 
                 var Cords_given = arg.splice(1,arg.length);
                 // console.log(Cords_given);
@@ -345,13 +350,6 @@ bot.on('message', message =>{
                     E_cords.push(Cords_given[2*i+1]);
                 }
                 // console.log(E_cords);
-                
-                // var temp = N_cords[0];
-                // console.log(temp);
-                // console.log(typeof(temp));
-                // var temp2 = temp.slice(1,2)
-                // console.log(temp2);
-
 
                 for(i=0;i<N_cords.length;i++){
                     N_cords[i] = N_cords[i].slice(2,N_cords[i].length);
@@ -425,7 +423,8 @@ bot.on('message', message =>{
                 var tick = arg[1];
 
                 var optxt = "```css";
-                optxt += "\n3 Tick Sheild - "+(parseInt(arg[1])+2);
+                optxt += "\nFor Shield pop visible on Tick " + arg[1];
+                optxt += "\n3 Tick Sheild - " + (parseInt(arg[1]) + 2);
                 optxt += "\n6 Tick Sheild - "+(parseInt(arg[1])+5);
                 optxt += "\n9 Tick Sheild - "+(parseInt(arg[1])+8);
                 optxt += "\n12 Tick Sheild - "+(parseInt(arg[1])+11);
@@ -450,13 +449,81 @@ bot.on('message', message =>{
                 var min_sp = (op_ct - 2) * agent_count;
 
                 var optxt = "```css";
-                optxt += "\nMax Spy Prot = " + min_sp;
+                optxt += "\nMax Spy Prot needed= " + min_sp;
                 optxt += "\nFor " + agent_count + " Agents";
                 optxt += "\nFor Outpost CT = " + op_ct;
                 optxt += "\n```";
 
                 message.reply(optxt);
                 
+                break;
+            case 'opspot2':
+                // no. of cords 
+                var totalcords = (arg.length - 1) / 2;
+                var Cords_given = arg.splice(1, arg.length);
+                //memory for cords
+                var N_cords = [];
+                var E_cords = [];
+
+                for (i = 0; i < totalcords; i++) {
+                    N_cords.push(Cords_given[2 * i]);
+                }
+                for (i = 0; i < totalcords; i++) {
+                    E_cords.push(Cords_given[2 * i + 1]);
+                }
+                for (i = 0; i < N_cords.length; i++) {
+                    N_cords[i] = N_cords[i].slice(2, N_cords[i].length);
+                }
+                for (i = 0; i < E_cords.length; i++) {
+                    E_cords[i] = E_cords[i].slice(2, E_cords[i].length);
+                }
+                //max and mins of cords
+                var maxN = Math.max(...N_cords);
+                var minN = Math.min(...N_cords);
+                var maxE = Math.max(...E_cords);
+                var minE = Math.min(...E_cords);
+
+                // Step 1. Iterate through all cords in a bounding box
+                // Step 2. Verify if dist between cord and veritices is > 124
+                // Step 3. Verify if cord is inside the poylgon
+
+
+                //function for point-in-poly verification
+                function inside(point, vs) {
+                    // ray-casting algorithm based on
+                    // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html/pnpoly.html
+
+                    var x = point[0], y = point[1];
+
+                    var inside = false;
+                    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+                        var xi = vs[i][0], yi = vs[i][1];
+                        var xj = vs[j][0], yj = vs[j][1];
+
+                        var intersect = ((yi > y) != (yj > y))
+                            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+                        if (intersect) inside = !inside;
+                    }
+
+                    return inside;
+                };
+
+                var polygon;
+                //Create Polygon using Array of Cordinates
+                for (var i = 0; i < totalcords; i++) {
+                    polygon[i][0] = N_cords[i];
+                    polygon[i][1] = E_cords[i];
+                }
+                console.log(polygon);
+
+
+
+
+
+
+
+
+
                 break;
 
             
