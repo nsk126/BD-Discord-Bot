@@ -19,9 +19,9 @@ bot.on('ready',() => {
 })
 
 bot.on('message', message =>{
-    console.log(message.content);
-    console.log(message.author.username);
-    console.log(message.channel.guild.name);
+    //console.log(message.content);
+    //console.log(message.author.username);
+    //console.log(message.channel.guild.name);
     
     if (!message.guild) return;
     if(message.content[0] == prefix){
