@@ -288,7 +288,7 @@ bot.on('message', message =>{
             case 'op':
                 //check for input errors
                 var optxt = "";
-                if(arg.length==5){
+                if (arg.length == 5 || arg.length == 6) {
                     var cord1N = arg[1].substring(2,arg[1].length);
                     var cord1E = arg[2].substring(2,arg[2].length);
                     cord1N = parseInt(cord1N);
