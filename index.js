@@ -4,7 +4,6 @@ const puppeteer = require('puppeteer');
 const bot = new Discord.Client();
 const token = process.env.token;
 
-
 const path = 'images/recieve.png';
 const prefix = '?';
 
@@ -297,6 +296,7 @@ bot.on('message', message =>{
                     cord1E = parseInt(cord1E);
     
                     var ETA = parseInt(arg[3]);
+                    consol.log(arg[4]);
                     var dist = 400 * ETA;
     
                     var angle = parseInt(arg[4]);
@@ -508,13 +508,76 @@ bot.on('message', message =>{
                     return inside;
                 };
 
-                var polygon;
-                //Create Polygon using Array of Cordinates
-                for (var i = 0; i < totalcords; i++) {
-                    polygon[i][0] = N_cords[i];
-                    polygon[i][1] = E_cords[i];
+                //function for distance check
+                function distancesee(Nc1, Nc2, Ec1, Ec2) {
+                    // x1 - x2 and y1 - y2
+                    var dist_calc = Math.sqrt(((Nc1 - Nc2) ** 2) + ((Ec1 - Ec2) ** 2));
+
+                    return dist_calc;
                 }
-                console.log(polygon);
+
+                //Create Polygon using Array of Cordinates
+                var polygon = [];
+
+                for (var i = 0; i < totalcords; i++) {
+                    var temp = [N_cords[i], E_cords[i]];
+                    polygon.push(temp);
+                }
+
+                //iterate through the given bounding box
+                for (var x = minE; x < maxE; x++) {
+                    for (var y = minN; y < maxN; y++) {
+                        //This block will contain a selected cordinate
+
+                        var point_dist = [];
+
+                        for (i = 0; i < totalcords; i++) {
+                            point_dist[i] = distancesee(y, N_cords[i], x, E_cords[i],);
+                        }
+
+                        function Space(dist) {
+                            return dist > 124;
+                        }
+
+                        if (point_dist.every(Space)) {
+
+                            if (arg.includes("-all")) {
+                                // code block to print all possible op spot cordinates
+                                console.log("This includes all")
+
+                                // Verify if point is inside the polygon
+                                var tempCord = [x, y];
+                                if (inside(tempCord, polygon)) {
+                                    //confirmation of the cordinate
+
+                                    //print all cords..
+                                    //incomplete
+                                }
+
+                            } else {
+                                // code block to print only 1st possible op spot cordinate
+                                console.log("single spot")
+
+                                // Verify if point is inside the polygon
+                                var tempCord = [x, y];
+                                if (inside(tempCord, polygon)) {
+                                    //confirmation of the cordinates
+                                    foundx = x;
+                                    foundy = y;
+                                    //setting x and y to their limits to break all loops
+                                    x = maxE;
+                                    y = maxN;
+                                } else {
+                                    console.log("not inside polygon");
+                                }
+                                break;
+                                
+                            }
+                        }
+
+                    }
+                }
+
 
 
 
