@@ -296,7 +296,7 @@ bot.on('message', message =>{
                     cord1E = parseInt(cord1E);
     
                     var ETA = parseInt(arg[3]);
-                    consol.log(arg[4]);
+                    console.log(arg[4]);
                     var dist = 400 * ETA;
     
                     var angle = parseInt(arg[4]);
