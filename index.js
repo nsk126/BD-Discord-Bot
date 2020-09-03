@@ -286,7 +286,6 @@ bot.on('message', message =>{
                 message.channel.send(recimg);
                 break;
             case 'op':
-                console.log(arg.length);
                 //check for input errors
                 var optxt = "";
                 if(arg.length==5){
