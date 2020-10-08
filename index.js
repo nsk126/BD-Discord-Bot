@@ -60,6 +60,13 @@ bot.on('message', message =>{
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "?op : Returns cordinates of perfect op cords with a provided ETA and angle\n";
                 helptxt += "\t\t-Eg: ?op N:1111 E:22222 2 30 <----- Here the first 2 arguments are reserved for the origin cordinates, the 3rd argument stands for the ETA(friendly) and the 4th argument stands for the Angle in counterclockwise fashion.\n"
+                helptxt += "?opspot: give cordinates(max 6) of outposts around the op-spot you are looking for. \n";
+                helptxt += "\tThe formation of the cordinates needs to be in a Convex Polygon manner. Given the appropriate cordinates, this tool will calculate for any plausible outpost-spots and return the first cordinate available from the Top-left.\n";
+                helptxt += "\tKeep in mind this tool requires the input cordinates to be surrouding the op-spot in a convex ploygon manner, anything different may not ensure the proper functioning of this tool.\n";
+                helptxt += "?shield : enter the tick number from which the Shield is visible(or well known as shield popped).\n";
+                helptxt += "\tThe tool will return all the possible ticks for when the shield may end.\n";
+                helptxt += "?spyprot: given the current CT of an outpost and the approximate enemy agents expected, this tool will return the maximum spy protection needed beyong which it is redundant to add more spy-protection!\n";
+
                 helptxt += "\n\nTo add this bot to your personal servers,\n"
                 helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>"
                 helptxt += "\n\nBanshee's Update logs :  https://pastebin.com/8vQy23Hj";

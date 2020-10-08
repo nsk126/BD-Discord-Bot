@@ -2,3 +2,7 @@ node_modules/
 package-lock.json
 test/Units.json
 test/test.js
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/ProjectSettings.json
+.vs/Discord - BOT/v16/.suo
