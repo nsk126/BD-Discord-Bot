@@ -10,19 +10,15 @@ const prefix = '?';
 bot.on('ready',() => {
     console.log(`Logged in as ${bot.user.tag}!`);
     bot.user.setPresence({
-            activity: { 
+            activity: {
                 name: 'CE-3! type ?help ?BD',
                 type: 'PLAYING'
-            }, status: 'online' 
+            }, status: 'online'
         })
 })
 
 bot.on('message', message =>{
-    //console.log(message.content);
-    //console.log(message.author.username);
-    //console.log(message.channel.guild.name);
-    
-    if (!message.guild) return;
+    if(!message.guild) return;
     if(message.content[0] == prefix){
         let arg = message.content.substring(prefix.length).split(" ");
         switch(arg[0].toLowerCase()){
@@ -60,20 +56,10 @@ bot.on('message', message =>{
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "?op : Returns cordinates of perfect op cords with a provided ETA and angle\n";
                 helptxt += "\t\t-Eg: ?op N:1111 E:22222 2 30 <----- Here the first 2 arguments are reserved for the origin cordinates, the 3rd argument stands for the ETA(friendly) and the 4th argument stands for the Angle in counterclockwise fashion.\n";
-                helptxt += "?opspot: give cordinates(max 6) of outposts around the op-spot you are looking for. \n";
-                helptxt += "\tThe formation of the cordinates needs to be in a Convex Polygon manner. Given the appropriate cordinates, this tool will calculate for any plausible outpost-spots and return the first cordinate available from the Top-left.\n";
-                helptxt += "\tKeep in mind this tool requires the input cordinates to be surrouding the op-spot in a convex ploygon manner, anything different may not ensure the proper functioning of this tool.\n";
-                helptxt += "?shield : enter the tick number from which the Shield is visible(or well known as shield popped).\n";
-                helptxt += "\tThe tool will return all the possible ticks for when the shield may end.\n";
-                helptxt += "?spyprot: given the current CT of an outpost and the approximate enemy agents expected, this tool will return the maximum spy protection needed beyong which it is redundant to add more spy-protection!\n";
-
                 helptxt += "\n\nTo add this bot to your personal servers,\n";
                 helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>";
                 helptxt += "\n\nBanshee's Update logs :  https://pastebin.com/8vQy23Hj";
-                
-               
-                
-                helptxt += "```";      
+                helptxt += "```";
                 message.channel.send(helptxt);
                 break;
             case 'ava':
@@ -95,7 +81,7 @@ bot.on('message', message =>{
                 // N:2697 E:9598 <- example arg
                 // N:6940 E:37334 N:5972 E:36621
 
-                //check for proper format                
+                //check for proper format
                 for(let i = 0;i<arg.length;i++){
                     if(arg[i] == ""){
                         let err = "";
@@ -104,7 +90,7 @@ bot.on('message', message =>{
                         err += "\n```"
                         message.reply(err);
                         return;
-                    }                    
+                    }
                 }
                 if(arg[1] == null || arg[2] == null || arg[3] == null || arg[4] == null){
                     let err = "";
@@ -124,21 +110,21 @@ bot.on('message', message =>{
                 }
 
                 // Checks done
-                
+
                 var cord1N = arg[1].substring(2,arg[1].length);
                 var cord1E = arg[2].substring(2,arg[2].length);
                 var cord2N = arg[3].substring(2,arg[3].length);
                 var cord2E = arg[4].substring(2,arg[4].length);
-                
+
                 cord1N = parseInt(cord1N);
                 cord1E = parseInt(cord1E);
                 cord2N = parseInt(cord2N);
                 cord2E = parseInt(cord2E);
-                
+
                 var x = cord1N - cord2N;
                 var y = cord1E - cord2E;
 
-                
+
                 var d = x**2 + y**2;
                 d = Math.sqrt(d);
                 d = Math.ceil(d);
@@ -162,7 +148,7 @@ bot.on('message', message =>{
 
                 var replydist = "```css";
                 if(x == 0 && y == 0){
-                    replydist += "\n Same cords !\n Please Try Again !" 
+                    replydist += "\n Same cords !\n Please Try Again !"
                 }else{
                     replydist += "\nDistance(Km) = " + d;
                     replydist += "\nHostile ETA = " + hETA;
@@ -191,7 +177,7 @@ bot.on('message', message =>{
 
             case 'mil':
                 // console.log(arg.length);
-                // Mil scan accuracy +-50% 
+                // Mil scan accuracy +-50%
                 // Wiki says 66% to 200% Standard Deviation
 
                 var scan = [];
@@ -207,14 +193,14 @@ bot.on('message', message =>{
                         message.reply(err);
                         return;
                     }
-                
+
                 }
                 for(i = 0;i < arg.length-1; i++){
                     scan[i] = arg[i+1];
                     sample_mean += parseInt(arg[i+1]);
                     // console.log(sample_mean);
                 }
-                
+
                 // console.log(scan);
                 for(i = 0;i < arg.length-1; i++){
                     Lscan[i] = scan[i] * 0.66;
@@ -231,8 +217,8 @@ bot.on('message', message =>{
 
                 Lbound = Math.round(Lbound);
                 Ubound = Math.round(Ubound);
-                
-                
+
+
                 var milop = "```css";
                 milop += "\nMax units = " + Ubound;
                 milop += "\nMin units = " + Lbound;
@@ -240,12 +226,12 @@ bot.on('message', message =>{
                     milop += "\nSample mean = " + sample_mean;
                 }
                 milop += "\n```";
-                
+
                 message.reply(milop);
                 break;
 
             case 'adv':
-                // adv scan accuracy +-25% 
+                // adv scan accuracy +-25%
                 // Wiki says 80% to 130% Standard Deviation
                 var scan = [];
                 var Lscan = [];
@@ -266,13 +252,13 @@ bot.on('message', message =>{
                 // console.log(Uscan);
                 var Lbound = Math.max(...Lscan).toFixed(2);
                 var Ubound = Math.min(...Uscan).toFixed(2);
-                
+
                 Lbound = Math.round(Lbound);
                 Ubound = Math.round(Ubound);
 
                 var advop = "```css";
                 advop += "\nMax units = " + Ubound;
-                advop += "\nMin units = " + Lbound; 
+                advop += "\nMin units = " + Lbound;
                 if(arg.length > 2){
                     advop += "\nSample mean = " + sample_mean;
                 }
@@ -289,7 +275,7 @@ bot.on('message', message =>{
                     await browser.close();
                     })();
 
-                const recimg = new Discord.MessageAttachment('images/recieve.png');  
+                const recimg = new Discord.MessageAttachment('images/recieve.png');
                 message.channel.send(recimg);
                 break;
             case 'op':
@@ -300,7 +286,7 @@ bot.on('message', message =>{
                     var cord1E = arg[2].substring(2,arg[2].length);
                     cord1N = parseInt(cord1N);
                     cord1E = parseInt(cord1E);
-    
+
                     var ETA = parseInt(arg[3]);
 
                     if (arg[5] == "-dist") {
@@ -308,21 +294,21 @@ bot.on('message', message =>{
                     } else {
                         var dist = 400 * ETA;
                     }
-    
+
                     var angle = parseInt(arg[4]);
                     var deg = angle;
-    
+
                     angle = angle * (Math.PI/180);
-    
+
                     var cord2N = dist * Math.sin(angle);
                     var cord2E = dist * Math.cos(angle);
-                    
+
                     cord2E = Math.floor(cord2E);
                     cord2N = Math.floor(cord2N);
-    
+
                     cord2E = cord1E + cord2E;
                     cord2N = cord1N - cord2N;
-                    
+
                     optxt = "```css";
                     optxt += "\nOp cords for ETA "+ ETA;
                     optxt += "\nAt an angle of "+deg;
@@ -333,7 +319,7 @@ bot.on('message', message =>{
                     optxt += "\nWrong input format";
                     optxt += "\n```";
                 }
-               
+
 
                 message.reply(optxt);
                 break;
@@ -341,17 +327,17 @@ bot.on('message', message =>{
             case 'opspot':
                 // console.log(arg);
                 // console.log(arg.length);
-                
+
                 var totalcords = (arg.length - 1)/2;
                 // console.log("Cords = " + totalcords
-                
+
                 var Cords_given = arg.splice(1,arg.length);
                 // console.log(Cords_given);
 
                 //sorting cords N and E
                 var N_cords = [];
                 var E_cords = [];
-                
+
                 for(i=0;i<totalcords;i++){
                     N_cords.push(Cords_given[2*i]);
                 }
@@ -365,7 +351,7 @@ bot.on('message', message =>{
                     N_cords[i] = N_cords[i].slice(2,N_cords[i].length);
                 }
                 // console.log(N_cords);
-                
+
                 for(i=0;i<E_cords.length;i++){
                     E_cords[i] = E_cords[i].slice(2,E_cords[i].length);
                 }
@@ -377,7 +363,7 @@ bot.on('message', message =>{
                 var minN = Math.min(...N_cords);
                 var maxE = Math.max(...E_cords);
                 var minE = Math.min(...E_cords);
-                
+
                 // console.log(maxN);
                 // console.log(maxE);
                 // console.log(minN);
@@ -390,14 +376,14 @@ bot.on('message', message =>{
 
                 for(x = minE; x < maxE; x++){
                     for(y = minN; y < maxN; y++){
-                        
+
                         var point_dist = [];
                         //formula for dist d = sqrt((a-b)^2 + (c-d)^2)
-                        
+
                         for(i = 0;i<totalcords;i++){
                             point_dist[i] = Math.sqrt(((x - E_cords[i])**2) + ((y-N_cords[i])**2));
                         }
-                        
+
                         function Space(dist) {
                             return dist > 124;
                         }
@@ -405,13 +391,13 @@ bot.on('message', message =>{
                         if(point_dist.every(Space)){
                             foundx = x;
                             foundy = y;
-                            
+
                             //setting x and y to their limits to break all loops
                             x = maxE;
                             y = maxN;
                             break;
                         }
-                        
+
                     }
                 }
 
@@ -423,7 +409,7 @@ bot.on('message', message =>{
                     optxt += "\n" + "N:"+foundy+" "+"E:"+foundx;
                 }else{
                     optxt += "\nOp spot not found";
-                }                
+                }
                 optxt += "\n```";
 
                 message.reply(optxt);
@@ -450,7 +436,7 @@ bot.on('message', message =>{
                     //by default 10 agents are considered.
                     agent_count = 10;
                 } else {
-                    agent_count = arg[2]; 
+                    agent_count = arg[2];
                 }
                 //working
                 //spies need +2 op ct to plant agent
@@ -465,10 +451,10 @@ bot.on('message', message =>{
                 optxt += "\n```";
 
                 message.reply(optxt);
-                
+
                 break;
             case 'opspot2':
-                // no. of cords 
+                // no. of cords
                 var totalcords = (arg.length - 1) / 2;
                 var Cords_given = arg.splice(1, arg.length);
                 //memory for cords
@@ -581,35 +567,16 @@ bot.on('message', message =>{
                                     console.log("not inside polygon");
                                 }
                                 break;
-                                
+
                             }
                         }
 
                     }
                 }
-
-
-
-
-
-
-
-
-
-
                 break;
-
-            
-            
-
         }
     }
-        
+
 })
 
 bot.login(token);
-
-
-
-
-
