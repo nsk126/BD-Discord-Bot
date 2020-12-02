@@ -56,6 +56,9 @@ bot.on('message', message =>{
                 helptxt += "?about : About this Discord Bot.\n";
                 helptxt += "?op : Returns cordinates of perfect op cords with a provided ETA and angle\n";
                 helptxt += "\t\t-Eg: ?op N:1111 E:22222 2 30 <----- Here the first 2 arguments are reserved for the origin cordinates, the 3rd argument stands for the ETA(friendly) and the 4th argument stands for the Angle in counterclockwise fashion.\n";
+                helptxt += "?opspot : If given 3-6 cordinates of ops, will return if opspot is available and if so will return the cordinate found\n.";
+                helptxt += "?shield : If given tick # of since when shield was visible, will return all possible tick #s of when sheid may drop\n";
+                helptxt += "?spyprot : If given CT of the op and # of agents(optional), will calc the max spy prot needed for safety.\n";
                 helptxt += "\n\nTo add this bot to your personal servers,\n";
                 helptxt += "<https://discord.com/api/oauth2/authorize?client_id=694073455120744458&permissions=124928&scope=bot>";
                 helptxt += "\n\nBanshee's Update logs :  https://pastebin.com/8vQy23Hj";
