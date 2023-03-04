@@ -1,3 +1,5 @@
+# [DEPRECATED] PLEASE GO TO [Bansheev2](https://github.com/nsk126/Bansheev2) instead
+----
 # Discord Bot for BattleDawn
 
 ## Discord JS
